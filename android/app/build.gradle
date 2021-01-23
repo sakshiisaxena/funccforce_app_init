@@ -28,6 +28,11 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion 29
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 30
+        multiDexEnabled true
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -63,4 +68,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation platform('com.google.firebase:firebase-bom:26.2.0')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation "androidx.multidex:multidex:2.0.1"
+    dependencies {
+        // ... // Import the Firebase BoM   implementation platform ( 'com.google.firebase: firebase-bom: 25.12.0' ) // When using the BoM, you don't specify versions in Firebase library dependencies / / Declare the dependency for the Firebase SDK for Google Analytics implementation 'com.google.firebase: firebase-analytics' // Declare the dependencies for any other desired Firebase products // For example, declare the dependencies for Firebase Authentication and Cloud Firestore   implementation ' com.google.firebase: firebase-auth '   implementation ' com.google.firebase: firebase-firestore ' }
+
+    }
 }

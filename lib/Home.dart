@@ -1,16 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:user_calender/LogInPage.dart';
+import 'package:user_calender/register.dart';
+import 'LogInPage.dart';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-
-final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-final GoogleSignIn googleSignIn = GoogleSignIn();
 
 class _HomeState extends State<Home> {
 
@@ -20,10 +16,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
-      /*appBar: AppBar(
-        backgroundColor: Colors.pink,
-        title: Text("Sign in"),
-      ),*/
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -51,7 +43,7 @@ class _HomeState extends State<Home> {
           ),
 
 
-          //LoginScreen
+          //GET STARTED BUTTON
           Center(
             child:Container(
                width: 220.0,
@@ -60,7 +52,7 @@ class _HomeState extends State<Home> {
               elevation: 5.0,
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (_) => LogInPage()));
+                  MaterialPageRoute(builder: (_) => register()));
             },
             color: Colors.pink,
             child: Row(
