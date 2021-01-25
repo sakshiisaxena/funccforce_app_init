@@ -22,24 +22,26 @@ String _userEmail;
 class _registerState extends State<register> {
   Color primaryColor = Color(0xff18203d);
 
-  @override
+  /*@override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
-  }
+  }*/
  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
+
       appBar: AppBar(
-        //title: Text("Registration"),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         //title: Text(widget.title),
         actions: <Widget>[
+
+//SIGN OUT
+
           Builder(builder: (BuildContext context) {
-//5
             return FlatButton(
               child: const Text('Sign out'),
               textColor: Theme
@@ -48,7 +50,6 @@ class _registerState extends State<register> {
               onPressed: () async {
                 final FirebaseUser user = await _auth.currentUser();
                 if (user == null) {
-//6
                   Scaffold.of(context).showSnackBar(const SnackBar(
                     content: Text('No one has signed in.'),
                   ));
@@ -64,11 +65,14 @@ class _registerState extends State<register> {
           })
         ],
       ),
+
+// MAIN BODY
+
       body: Center(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: Form( key: _formKey,
-            //child: SingleChildScrollView(
+            child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
 
@@ -122,7 +126,9 @@ class _registerState extends State<register> {
                     return null;
                   },
                 ),
-                SizedBox(height: 25,),
+                SizedBox(height: 20,),
+
+// SUBMIT BUTTON
 
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -139,16 +145,50 @@ class _registerState extends State<register> {
                     color: Colors.pink,
                   ),
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 20),
 
-                _buildFooterLogo1(),
+               // _buildFooterLogo1(),
+
+// FOOTER
+                Row(
+                  children: <Widget>[
+                    Center(
+                      child: Text(
+                        "Already have an account?",
+                        textDirection: TextDirection.ltr,
+                        style: GoogleFonts.openSans(
+                            color: Colors.white,
+                            fontSize: 15),
+                      ),
+                    ),
+                    //Container(
+                      //padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      //alignment: Alignment.center,
+                      FlatButton(
+                        //elevation: 0.0,
+                        onPressed: () async {
+                          Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (_) => LogInPage()));
+                        },
+                        child: const Text(
+                          'LogIn',
+                           textAlign: TextAlign.right,
+                           textDirection: TextDirection.rtl,
+                        ),
+                        textColor: Colors.white,
+                        //color: Colors.pink,
+                      ),
+                    //),
+                  ],
+                ),
 
                 Container(
                   alignment: Alignment.center,
                   child: Text(_success == null
                       ? ''
                       : (_success
-                      ?  Navigator.push(context,
+                      ? Navigator.push(context,
                       MaterialPageRoute(
                           builder: (_) => LogInPage()))
                   //'Successfully registered ' + _userEmail
@@ -159,7 +199,8 @@ class _registerState extends State<register> {
           ),
         ),
       ),
-    );
+    ));
+
   }
 
 
@@ -183,18 +224,21 @@ class _registerState extends State<register> {
 }
 
 
-  _buildFooterLogo1() {
+  /*_buildFooterLogo1() {
     return Row(
       children: <Widget>[
-            Text(
-              "Already have an account?",
-              textDirection: TextDirection.ltr,
-              style: GoogleFonts.openSans(
-                color: Colors.white,
-                fontSize: 15),
+            Center(
+              child: Text(
+                "Already have an account?",
+                textDirection: TextDirection.ltr,
+                style: GoogleFonts.openSans(
+                  color: Colors.white,
+                  fontSize: 15),
+              ),
             ),
+
         Expanded(
-          child: Text(
+           child:Text(
             "LogIn",
             textDirection: TextDirection.rtl,
             style: GoogleFonts.openSans(
@@ -202,6 +246,6 @@ class _registerState extends State<register> {
               fontSize: 15),
           ),
         ),
-      ],
+        ],
     );
-  }
+  }*/

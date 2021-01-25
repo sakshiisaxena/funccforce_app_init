@@ -5,7 +5,7 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
-void main() {
+void main()  {
   runApp(MyApp());
 }
 

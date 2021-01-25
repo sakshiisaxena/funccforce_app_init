@@ -35,13 +35,19 @@ class _LogInPageState extends State<LogInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: primaryColor,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+        ),
         body: Center(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Form(
               key: _formKey,
+            child: SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                //crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
 
                   Text(
@@ -98,7 +104,7 @@ class _LogInPageState extends State<LogInPage> {
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     alignment: Alignment.center,
                     child: RaisedButton(
-                      elevation: 5.0;,
+                      elevation: 5.0,
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
                           _signInWithEmailAndPassword();
@@ -109,7 +115,7 @@ class _LogInPageState extends State<LogInPage> {
                       color: Colors.pink,
                     ),
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(height: 30),
 
                   _buildFooterLogo(),
 
@@ -133,6 +139,7 @@ class _LogInPageState extends State<LogInPage> {
             ),
           ),
         )
+    )
     );
   }
 
